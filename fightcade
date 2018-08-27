@@ -1,0 +1,5 @@
+#!/bin/bash
+#this program launches fightcade app, using the link in the Wine directory.
+ 
+echo "Launching fightcade"
+wine ~/.wine/drive_c/'Program Files'/FightCade/fightcade

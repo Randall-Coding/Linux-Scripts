@@ -1,0 +1,61 @@
+#!/bin/bash
+
+#ytd calls youtube-dl with -f mp4 then updates the date modified of the downloaded file.  
+# default directory is the current folder
+
+script=$( basename $0 )
+
+if [ $# -eq 0 ] 
+then
+   echo "Usage: $script <URL>"  1>&2
+   exit 1
+fi
+
+echo "ytd: download in progress" 
+set +o noclobber 
+file=' '
+echo ' ' > ytd_log    #override old file
+
+youtube-dl "$*" -f mp4 |
+while read line
+do
+  echo "$line" | tee -a ytd_log   	
+done 
+
+file=$( cat ytd_log | grep "\[download\] Destination:" | gawk -F': ' '{print $2}' )
+
+# [Good alternative] cat ytd_log | grep Destination: | cut -d: -f2
+
+#if already downloaded
+cat ytd_log | grep "already been downloaded" > /dev/null
+
+#check exit status of grep ^ 
+if [ $? -eq 0 ]
+then
+   echo 
+   echo "$script says: already downloaded.  check file name" 1>&2 
+   exit 1
+fi
+
+if [ -f "$file" ];
+then
+  touch "$file"
+else
+  echo "ytd says:"
+  echo "No such file.  Cannot set date modified.  Please check the file name"  1>&2
+fi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#created 08/03/2018

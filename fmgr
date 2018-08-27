@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ $# == 0 ]; then      #no args
+  $FILE_MANAGER ./ &
+else
+  for folder in $* ; do   #args 
+    $FILE_MANAGER $folder &
+  done
+fi
+
+#single variable line is $FILE_MANAGER $1  .   

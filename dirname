@@ -1,0 +1,24 @@
+#!/bin/bash
+
+### debugging set -o xtrace
+
+script=$( basename "$0") 
+if [ $# -eq 0 -o $# -ge 2 ]; then
+   echo "Usage: $script <argument>...(single arg)"  1>&2
+   exit 1
+fi
+
+IFS='/'
+set $@  
+
+output=($@) 
+n=$# 
+i=0 
+while ((i<$n-1)); do  
+   echo -n ${output[$i]}
+   if [ $i -ne $(($n-2)) ]; then
+      echo -n /
+   fi
+   ((i+=1))
+done
+echo

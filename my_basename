@@ -1,0 +1,19 @@
+#!/bin/bash
+
+script=$( basename "$0") 
+if [ $# -eq 0 -o $# -gt 2 ]; then
+   echo "Usage: $script <argument>...(single arg)"  1>&2
+   exit 1
+fi
+
+IFS='/'
+
+set $@  
+ 
+#debug echo "This is my array $ @: $@"
+#echo "$ 1 = $1 , $ 2 = $2 , $ 3 = $3 "
+
+output=($@) 
+n=$# 
+echo ${output[$n-1]}
+

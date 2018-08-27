@@ -1,0 +1,13 @@
+#!/bin/bash
+
+juices=(orange papaya apple orange grape pineapple)
+trap 'echo Holy moly you pressed interrupt' SIGINT SIGTERM SIGSTOP	
+
+PS3="Please choose a juice that you like  " 
+select juice in ${juices[*]} 
+do
+	if [ juice ]; then  
+	  echo "Here is your $juice juice"
+	fi 
+	break
+done

@@ -1,0 +1,11 @@
+#!/bin/bash
+
+echo These are the $# params:  $1 , $2, $3, $4, $5, $6
+echo
+
+set x y z 
+echo Now I changed the params with set: $1 , $2, $3, $4, $5, $6
+echo
+
+set -- 
+echo Now using set -- : $1 , $2, $3, $4, $5, $6

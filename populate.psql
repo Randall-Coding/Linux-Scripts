@@ -1,0 +1,17 @@
+#!/bin/bash
+
+num=10
+#if test -f $1 then 	
+#  num=$1
+#fi 
+
+script=$(basename $0)
+
+echo "I am in $script creating $num table entries in psql" 
+
+
+for ((n=1;n<$num;n+=1))  do
+  psql -c "INSERT INTO people (name) VALUES ('OG_Random$n');" > /dev/null
+done
+
+echo "End of $script" 

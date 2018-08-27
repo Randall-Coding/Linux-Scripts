@@ -1,0 +1,16 @@
+ 
+file=$( cat ytd_log | grep "\[download\] Destination:" | gawk -F': ' '{print $2}' )
+
+
+echo "File:" $file 
+
+if [ -f "$file" ];
+then
+  touch "$file"
+else
+  echo "No such file.  Cannot set date modified.  Please check the file name"  1>&2
+fi
+
+
+
+#call ytd  or youtube-dl  
