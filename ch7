@@ -1,0 +1,17 @@
+#!/bin/bash
+
+script=$(basename $0) 
+
+if [ $# -eq 0 ]; then
+    echo "nothing to do, $script needs arguments"
+    exit 1 
+fi
+
+for f in $@ 
+do
+   if [ -f $f -o -d $f ]; then
+      chmod 700 $@  
+   else
+      echo "$script error:  some args are not files or directories" >&2  
+   fi 
+done
