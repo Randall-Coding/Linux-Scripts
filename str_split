@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#checks
+script=$(basename $0)
+if [ $# -eq 0 ];then
+    echo "$script : format is $script <string> <opt-delim-char>"
+    exit 1
+fi 
+
+if [ $# -eq 2 ];then
+  IFS=$2
+else
+  IFS=':'   
+fi
+
+
+#separate strings and echo one at a time
+list=($1)
+for word in ${list[*]}
+do
+   echo "$word"
+done
+echo "The list[*] is: ${list[*]}"
+
+

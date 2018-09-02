@@ -1,0 +1,14 @@
+#!/bin/bash
+# g+: make file, change permissions to 700, add template partials, open in gedit
+
+script=$(basename $0)
+if [ $# -eq 0 ];then
+    echo "$script : format is $script <arg>"
+fi 
+
+filenames=$@ 
+(touch $filenames && 
+ ch7 $filenames && 
+ cat partials/SHBANG partials/CHK_ARGS >> $filenames &&
+ gedit $filenames) || echo "error in $script" 
+

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+script=$(basename $0)
+if [ $# -ne 2 ];then
+    echo "$script : format is $script <fname> <fname>"
+    exit 1
+fi 
+
+if [ -f $1 -a -f $2 ]; then
+   p1=$(ls -l $1 | cut -c 2-10) 
+   p2=$(ls -l $2 | cut -c 2-10) 
+else
+   echo "yo filenames ain't files bro"
+fi 
+
+echo "This is $1: $p1 and this is $2: $p2"
+
+
+
+if [ $p1 = $p2 ]; then
+   echo "the permissions are equal" 
+   exit 0
+else
+   echo "the permissions are different"
+   exit 1
+fi

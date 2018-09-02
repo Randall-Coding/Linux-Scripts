@@ -1,0 +1,16 @@
+#!/bin/bash
+script=$(basename $0)
+if [ $# -ne 0 ];then
+   echo "$script : format is $script"
+   exit 1 
+fi 
+
+echo "Directories:"
+
+ls -l | gawk '$1 ~ /^d/ {print "filename: " $9,$10,$11}' 
+
+sleep 2
+
+echo 
+echo "Regular files:" 
+ls -l | gawk '$1 ~ /^-/ {print "filename: " $9,$10,$11}'   ###debug needs the NOT operator
