@@ -1,4 +1,5 @@
 #!/bin/bash
+#populate psql database
 
 num=10
 #if test -f $1 then 	

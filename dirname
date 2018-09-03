@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#provides the directory name of a given absolute path
 ### debugging set -o xtrace
 
 script=$( basename "$0") 

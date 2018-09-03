@@ -1,3 +1,4 @@
 #!/bin/bash
+#takes me to Rails dev folder 
 
 cd "$SITES"

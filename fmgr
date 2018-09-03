@@ -1,4 +1,5 @@
 #!/bin/bash
+#opens the default file manager
 
 if [ $# == 0 ]; then      #no args
   $FILE_MANAGER ./ &

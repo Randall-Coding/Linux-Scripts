@@ -1,3 +1,4 @@
 #!/bin/bash
+#lists only directories in current directory, long format
 
 ls -alF | grep ^d

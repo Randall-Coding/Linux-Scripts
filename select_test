@@ -1,4 +1,5 @@
 #!/bin/bash
+#tests select control flow
 
 juices=(orange papaya apple orange grape pineapple)
 trap 'echo Holy moly you pressed interrupt' SIGINT SIGTERM SIGSTOP	

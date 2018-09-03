@@ -1,7 +1,6 @@
 #!/bin/bash
 #  this program tells you whether output is directed to the term or not
 
-
 if [ -t 1 ]; then
    echo "Std output IS going to terminal"
 else

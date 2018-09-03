@@ -1,4 +1,5 @@
 #!/bin/bash
+#random test of functions global and local variables
 
 function func1 () {
 echo "func1"

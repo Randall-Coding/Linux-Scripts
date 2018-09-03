@@ -1,13 +1,12 @@
 #!/bin/bash
+#takes in a PATH variable and prepends another folder to it
 
 trap 'rm ~/temp -f' EXIT SIGTERM 
-
 script=$(basename $0)
 if [ $# -ne 2 ];then
    echo "$script : format is $script <arg> <arg2>"
    exit 1 
 fi 
-
 
 #check if <arg2> is in <arg1>, should both be strings
 cat ~/bin/partials/SHBANG >> ~/temp 
