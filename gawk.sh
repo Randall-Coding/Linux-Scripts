@@ -10,7 +10,8 @@ fi
 ls -l | gawk 'BEGIN {print "Directories:"}$1 ~ /^d/ {print "filename: " $9,$10,$11} END {print NR " files"}' 
 
 sleep 2
-
 echo 
 
-ls -l | gawk 'BEGIN {print "Regular files: "} $1 ~ /^-/ {print "filename: " $9,$10,$11} END {print NR " files"}'   ###debug needs the NOT operator
+ls -l | gawk 'BEGIN {print "Regular files: "} $1 ~ /^[^d]/ {print "filename: " $9,$10,$11} END {print NR " files"}'   #everything but a directory
+
+
