@@ -1,0 +1,9 @@
+#!/bin/bash
+#sets enviromnental variables on shell
+
+export FILE_MANAGER='nautilus'
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/home/mcgoy/bin
+export EDITOR='gedit'
+export SITES='/media/mcgoy/CD25-ED8E/Learning/RoR/Sites'
+
+# set -o noclobber     turn on if needed 
