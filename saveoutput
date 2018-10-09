@@ -1,9 +1,0 @@
-#!/bin/bash
-
-exec > savefile 
-
-echo "Line 1"
-echo "Line 2"
-echo "Line 3"
-
-

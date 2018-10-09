@@ -2,34 +2,33 @@
 #random test of functions global and local variables
 
 function func1 () {
-echo "func1"
-local loc="This is loc from func1"
-glob="This is glob from func1"
-echo $glob
-echo $loc
+    echo "func1"
+    local loc="This is loc from func1"
+    glob="This is glob from func1"
+    echo $glob
+    echo $loc
 }
 
 function func2 () {
-echo "func2"
-echo $glob
-echo $loc
+    echo "func2"
+    echo $glob
+    echo $loc
 }
 
 function func3 () {
-echo "fun3"
-echo $glob
-echo $loc
+    echo "fun3"
+    echo $glob
+    echo $loc
 }
 
 function func4 () {
-echo "func4"
-echo $glob
-echo $loc
+    echo "func4"
+    echo $glob
+    echo $loc
 }
 
 
 #Main prog
-
 func1
 func2
 func3
