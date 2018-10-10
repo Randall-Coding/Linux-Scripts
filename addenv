@@ -1,10 +1,14 @@
 #!/bin/bash
 #takes in a PATH variable and prepends another folder to it
 
-trap 'rm ~/temp -f' EXIT SIGTERM 
 script=$(basename $0)
+
+#clean up
+trap 'rm ~/temp -f' EXIT SIGTERM 1 2 3 19 20 
+
+#params check
 if [ $# -ne 2 ];then
-   echo "$script : format is $script <arg> <arg2>"
+   echo "$script : format is '$script PATH <arg2>'"
    exit 1 
 fi 
 
@@ -19,23 +23,25 @@ echo 'chk3=$?'  >> ~/temp
 echo "echo \$$1 | grep :${2}: > /dev/null" >> ~/temp
 echo 'chk4=$?'  >> ~/temp
 
+#run temp script, sets variables
 . ~/temp    #doing this instead of eval
-### echo "This is temp:" 
-### cat ~/temp 
 
+#combine tests into one
 chk=$((chk1 + chk2 + chk3 + chk4)) 
 
+# chk = 4 means it already exists in the PATH.  
 if [ ! $chk -lt 4 ];then
-#not found then prepend to arg1 with : separater 
+   
+   #not found, prepend to arg1 with : separater 
    echo $2 could not be found in $1 , so we will prepend!
    expand=$(eval "echo \$$1") 
    eval 'export $1="$2:$expand"'
-   ### echo "Here is PATH: $PATH"
+   sleep 1
+   echo
+   echo "Here is PATH: $PATH"
 else  
-#found then say so and quit
+   #found then say so and just quit
    echo $2 was found in $1 already
 fi
 
-echo "This does not export to current bash shell :("  debug ###
-
-rm ~/temp -f 
+#test for export outside of current shell
