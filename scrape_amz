@@ -1,0 +1,10 @@
+#!/bin/bash 
+#scrapes amazon.  simply provides body of HTML.
+
+url="https://www.amazon.com/s/url=search-alias%3Daps&field-keywords=Negative+ion+generator"
+#curl 'https://www.amazon.com/s/url=search-alias&field-keywords=Negative+ion+generator' | gawk -f scrape.gawk
+#curl 'https://www.amazon.com' | gawk -f 'scrape.gawk'
+
+wget 'https://www.amazon.com/s/url=search-alias%3Daps&field-keywords=Negative+ion+generator' -O amz
+cat amz | gawk -f 'scrape.gawk'
+

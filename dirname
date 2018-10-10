@@ -11,14 +11,18 @@ fi
 IFS='/'
 set $@  
 
-output=($@) 
+dirlist=($@) 
 n=$# 
 i=0 
 while ((i<$n-1)); do  
-   echo -n ${output[$i]}
+   echo -n ${dirlist[$i]}
    if [ $i -ne $(($n-2)) ]; then
       echo -n /
    fi
    ((i+=1))
 done
-echo
+
+if [ $# -gt 1 ]; then
+    echo -n /
+fi
+echo O

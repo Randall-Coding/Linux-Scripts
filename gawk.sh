@@ -1,5 +1,5 @@
 #!/bin/bash
-#testing basic gawk functionality.  BEGIN, END, field selectors and regular expressions
+#testing basic gawk functionality.  Prints the names of all directories, then a list of regular file names in working directory
 
 script=$(basename $0)
 if [ $# -ne 0 ];then
@@ -12,6 +12,6 @@ ls -l | gawk 'BEGIN {print "Directories:"}$1 ~ /^d/ {print "filename: " $9,$10,$
 sleep 2
 echo 
 
-ls -l | gawk 'BEGIN {print "Regular files: "} $1 ~ /^[^d]/ {print "filename: " $9,$10,$11} END {print NR " files"}'   #everything but a directory
+ls -l | gawk 'BEGIN {print "Regular files: "} $1 ~ /^[^d]/ {print "filename: " $9,$10,$11} END {print NR " files"}'   #everything but directories
 
 
