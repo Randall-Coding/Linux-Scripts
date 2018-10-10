@@ -40,7 +40,7 @@ if [ ! $chk -lt 4 ];then
    echo
    echo "Here is PATH: $PATH"
 else  
-   #found, say so and just quit
+   #found, say so and quit
    echo $2 was found in $1 already
 fi
 
