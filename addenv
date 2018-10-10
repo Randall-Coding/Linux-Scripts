@@ -1,6 +1,7 @@
 #!/bin/bash
 #takes in a PATH variable and prepends another folder to it
 
+#set vars
 script=$(basename $0)
 
 #clean up
@@ -39,7 +40,7 @@ if [ ! $chk -lt 4 ];then
    echo
    echo "Here is PATH: $PATH"
 else  
-   #found then say so and just quit
+   #found, say so and just quit
    echo $2 was found in $1 already
 fi
 
