@@ -8,7 +8,7 @@ trap 'rm ~/temp -f' EXIT SIGTERM 1 2 3 19 20
 
 #params check
 if [ $# -ne 2 ];then
-   echo "$script : format is '$script PATH <arg2>'"
+   echo "$script : format is '$script PATH <arg2>'	"
    exit 1 
 fi 
 
@@ -31,7 +31,6 @@ chk=$((chk1 + chk2 + chk3 + chk4))
 
 # chk = 4 means it already exists in the PATH.  
 if [ ! $chk -lt 4 ];then
-   
    #not found, prepend to arg1 with : separater 
    echo $2 could not be found in $1 , so we will prepend!
    expand=$(eval "echo \$$1") 
