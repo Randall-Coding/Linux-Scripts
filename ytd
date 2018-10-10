@@ -1,42 +1,45 @@
 #!/bin/bash
 
 #ytd calls youtube-dl with -f mp4 then updates the date modified of the downloaded file.  
-# default directory is the current folder
+#default directory is the home directory
 
 script=$( basename $0 )
 
+#params check
 if [ $# -eq 0 ] 
 then
    echo "Usage: $script <URL>"  1>&2
    exit 1
 fi
 
+#initialize
 echo "ytd: download in progress" 
 set +o noclobber 
 file=' '
 echo ' ' > ytd_log    #override old file
+trap "rm ytd_log -f" exit 1 2 3 9 19 20
 
+#download then print output (tty and file)
 youtube-dl "$*" -f mp4 |
 while read line
 do
   echo "$line" | tee -a ytd_log   	
 done 
 
+#obtain file name
 file=$( cat ytd_log | grep "\[download\] Destination:" | gawk -F': ' '{print $2}' )
+   # [Valid alternative] cat ytd_log | grep Destination: | cut -d: -f2
 
-# [Good alternative] cat ytd_log | grep Destination: | cut -d: -f2
-
-#if already downloaded
+#if already downloaded end here
 cat ytd_log | grep "already been downloaded" > /dev/null
-
-#check exit status of grep ^ 
-if [ $? -eq 0 ]
+if [ $? -eq 0 ]     
 then
    echo 
    echo "$script says: already downloaded.  check file name" 1>&2 
    exit 1
 fi
 
+#touch new file because date from Youtube will be inaccurate
 if [ -f "$file" ];
 then
   touch "$file"
