@@ -1,0 +1,10 @@
+#!/bin/bash
+#count_spec prints out number of lines of spec code in Rails project
+script=$(basename $0)
+if [ $# -gt 0 ];then
+   echo "$script : format is \$ $script "
+   exit 1 
+fi 
+
+cat $(find spec/ -name '*\_spec.rb') | wc -l  || exit 1
+
