@@ -9,5 +9,5 @@ alias sites='cd "$SITES"'
 alias filename='basename'
 alias search='apropos'
 alias gpgh='git push github_ssh master && echo && git push heroku master'
-alias gpg='git push github_ssh master'
-
+alias gp='git push github_ssh master'
+alias gpl='git pull github_ssh master'

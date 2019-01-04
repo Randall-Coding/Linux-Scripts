@@ -7,3 +7,7 @@ export EDITOR='gedit'
 export SITES='/media/mcgoy/CD25-ED8E/Learning/RoR/Sites'
 
 # set -o noclobber     turn on if needed 
+
+if [ -f ~/.bash_vars_api ] ; then
+    . ~/.bash_vars_api
+fi
