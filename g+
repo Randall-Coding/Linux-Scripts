@@ -7,8 +7,9 @@ if [ $# -eq 0 ];then
 fi 
 
 filenames=$@ 
+
 (touch $filenames && 
  ch7 $filenames && 
- cat partials/SHBANG partials/CHK_ARGS >> $filenames &&
+ cat ~/bin/partials/SHBANG ~/bin/partials/CHK_ARGS >> $filenames &&
  gedit $filenames) || echo "error in $script" 
 
