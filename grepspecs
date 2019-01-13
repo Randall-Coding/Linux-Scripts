@@ -1,0 +1,21 @@
+#!/bin/bash
+#grepspecs is case insensitive
+
+script=$(basename $0)
+if [ $# -eq 0 ];then
+   echo "$script : format is $script <arg>"
+   exit 1 
+fi
+
+echo '--------------------------------------------------'
+for file in $(find spec/ -name '*\_spec.rb') 
+do
+	echo $file
+	grep -i  $1 $file
+	echo '--------------------------------------------------'
+done
+
+#or
+# find spec/ -name '*\_spec.rb'  | grep $1 -
+# grep -i  $1 $(find spec/ -name '*\_spec.rb') 
+#or

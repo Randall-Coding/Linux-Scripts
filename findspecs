@@ -1,0 +1,10 @@
+#!/bin/bash
+#findspecs provides a list of all specs
+
+script=$(basename $0)
+if [ $# -gt 1 ];then
+   echo "$script: format is $script [<subfolder>]"
+   exit 1 
+fi 
+
+find spec/$1 -name '*\_spec.rb'
